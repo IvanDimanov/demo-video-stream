@@ -1,0 +1,73 @@
+{
+  "name": "demo-video-stream",
+  "description": "Demo app for Video streaming and User-Address management",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "db-clear": "node -r ts-node/register -r dotenv/config ./db/scripts/dbClear.ts",
+    "db-migrate-latest": "knex migrate:latest",
+    "db-migrate-down": "knex migrate:down",
+    "db-migrate-list": "knex migrate:list",
+    "db-seed": "knex seed:run",
+    "start": "pm2 start ./pm2-local.config.js --no-daemon",
+    "start-production-pm2": "pm2 start ./pm2-production.config.js --no-daemon",
+    "start-production": "node -r ./tsconfig-paths-bootstrap.js ./build/index.js",
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register",
+    "test-report": "nyc npm run test -- --reporter mochawesome --reporter-options reportDir='./build/test-results/',reportFilename='index',reportPageTitle='video-stream mocha test results',inline=true,cdn=true,charts=true,autoOpen=false",
+    "build": "rimraf ./build && tsc --build tsconfig.json && npm run test-report",
+    "lint": "eslint ./**/*.{js,jsx,ts,tsx}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  },
+  "dependencies": {
+    "@istanbuljs/nyc-config-typescript": "1.0.1",
+    "ajv": "6.12.6",
+    "dotenv": "8.2.0",
+    "fastify": "3.14.2",
+    "fastify-cors": "5.2.0",
+    "fastify-env": "2.1.0",
+    "fastify-helmet": "5.3.1",
+    "fastify-objectionjs": "0.4.0",
+    "fastify-plugin": "3.0.0",
+    "fastify-swagger": "4.6.0",
+    "json-schema-to-ts": "1.6.1",
+    "json5": "2.2.0",
+    "knex": "0.95.6",
+    "mime-types": "2.1.31",
+    "objection": "2.2.15",
+    "pg": "8.6.0",
+    "pm2": "5.1.0",
+    "rimraf": "3.0.2",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "4.2.4",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@types/chai": "4.2.16",
+    "@types/chai-string": "1.4.2",
+    "@types/mocha": "8.2.2",
+    "@types/node": "14.14.41",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "chai": "4.3.4",
+    "chai-string": "1.5.0",
+    "eslint": "7.24.0",
+    "eslint-config-google": "0.14.0",
+    "eslint-plugin-jsdoc": "32.3.0",
+    "husky": "6.0.0",
+    "mocha": "8.3.2",
+    "mochawesome": "6.2.2",
+    "nyc": "15.1.0",
+    "sinon": "10.0.1",
+    "sinon-chai": "3.6.0",
+    "ts-node": "9.1.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true,
+  "check-coverage": true,
+  "branches": 0,
+  "lines": 0,
+  "functions": 0,
+  "statements": 0,
+  "watermarks": {
+    "lines": [0, 95],
+    "functions": [0, 95],
+    "branches": [0, 95],
+    "statements": [0, 95]
+  },
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "report-dir": "./build/test-coverage",
+  "skip-full": false,
+  "include": [
+    "src/**/*.{js,ts}"
+  ],
+  "cache": false
+}
