@@ -32,11 +32,13 @@ npm start
 ```
 
 Open Swagger Docs [http://localhost:8000/swagger](http://localhost:8000/swagger)
+
 Open Video Streaming app [http://localhost:8000/app](http://localhost:8000/app)
+<br />
 
 
 ## Tests
-We use `mocha` and `chai` for our unit tests.
+We use [`mocha`](https://mochajs.org), [`chai`](https://www.chaijs.com), and [`sinon`](https://sinonjs.org) for our unit tests.
 ```
 npm run test
 ```
